@@ -1,3 +1,7 @@
+
+import pytest
+from pipeline import DataPipeline
+
 def test_docstrings_presence():
     """Test para verificar que todos los métodos de DataPipeline tienen docstrings"""
     pipeline = DataPipeline()
