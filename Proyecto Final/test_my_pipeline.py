@@ -2,32 +2,6 @@ import pytest
 import pandas as pd
 from pipeline import DataPipeline
 
-def get_house_values(df):
-    """
-    Función que devuelve estadísticas de los valores de las casas
-    
-    Args:
-        df: DataFrame con los datos de las casas
-        
-    Returns:
-        dict: Diccionario con estadísticas de los valores de las casas
-    """
-    if 'price' not in df.columns:
-        raise ValueError("El DataFrame debe contener una columna 'price'")
-    
-    values_stats = {
-        'max_value': df['price'].max(),
-        'min_value': df['price'].min(),
-        'mean_value': df['price'].mean(),
-        'median_value': df['price'].median(),
-        'std_value': df['price'].std(),
-        'total_houses': len(df),
-        'max_value_house_index': df['price'].idxmax(),
-        'min_value_house_index': df['price'].idxmin()
-    }
-    
-    return values_stats
-
 def test_most_valued_house_real_data():
     # Use the first 40 rows from the real Housing.csv
     df = pd.read_csv('/content/UCG_IAC508/Proyecto Final/Housing.csv').head(40)
