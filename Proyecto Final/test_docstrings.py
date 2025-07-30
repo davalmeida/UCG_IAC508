@@ -28,3 +28,30 @@ def test_docstrings_presence():
         else:
             # Para __init__, solo verificar que tiene documentación
             assert len(doc) > 50, f"El método {method_name} tiene documentación insuficiente"
+            
+def test_docstrings_completeness():
+    """Test para verificar que todos los métodos de DataPipeline tienen docstrings completos"""
+    pipeline = DataPipeline()
+    
+    # Verificar que la clase tiene docstring
+    assert DataPipeline.__doc__ is not None, "La clase DataPipeline debe tener docstring"
+    assert len(DataPipeline.__doc__.strip()) > 0, "La clase DataPipeline debe tener docstring no vacío"
+    
+    # Verificar que todos los métodos tienen docstrings
+    methods = ['__init__', 'preprocess', 'train', 'evaluate']
+    
+    for method_name in methods:
+        method = getattr(pipeline, method_name)
+        assert method.__doc__ is not None, f"El método {method_name} debe tener docstring"
+        assert len(method.__doc__.strip()) > 0, f"El método {method_name} debe tener docstring no vacío"
+        
+        # Verificar que el docstring contiene información útil
+        doc = method.__doc__.lower()
+        
+        # Para métodos que no son __init__, verificar que documentan parámetros y retorno
+        if method_name != '__init__':
+            assert 'args' in doc or 'parámetros' in doc or 'param' in doc, f"El método {method_name} debe documentar sus parámetros"
+            assert 'return' in doc or 'devuelve' in doc, f"El método {method_name} debe documentar su valor de retorno"
+        else:
+            # Para __init__, solo verificar que tiene documentación suficiente
+            assert len(doc) > 50, f"El método {method_name} debe tener documentación más detallada"
