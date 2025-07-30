@@ -87,7 +87,7 @@ def test_most_valued_house():
 
 def test_most_valued_house_real_data():
     # Use the first 40 rows from the real Housing.csv
-    df = pd.read_csv('Housing.csv').head(40)
+    df = pd.read_csv('/content/UCG_IAC508/Proyecto Final/Housing.csv').head(40)
     pipeline = DataPipeline()
     X, y = pipeline.preprocess(df)
     idx_max = y.idxmax()
@@ -103,7 +103,7 @@ def test_most_valued_house_real_data():
 def test_get_house_values():
     """Test para la función get_house_values usando el dataset completo de Housing.csv"""
     # Cargar el dataset completo de Housing.csv
-    df = pd.read_csv('Housing.csv')
+    df = pd.read_csv('/content/UCG_IAC508/Proyecto Final/Housing.csv')
     
     # Obtener estadísticas de valores
     values = get_house_values(df)
