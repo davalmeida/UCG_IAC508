@@ -1,4 +1,3 @@
-# %%writefile test_my_pipeline.py
 import pytest
 import pandas as pd
 from pipeline import DataPipeline
