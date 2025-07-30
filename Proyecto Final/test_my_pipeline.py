@@ -34,7 +34,7 @@ def test_most_valued_house():
 
 def test_most_valued_house_real_data():
     # Use the first 40 rows from the real Housing.csv
-    df = pd.read_csv('Proyecto Final/Housing.csv').head(40)
+    df = pd.read_csv('Housing.csv').head(40)
     pipeline = DataPipeline()
     X, y = pipeline.preprocess(df)
     idx_max = y.idxmax()
